@@ -1,39 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Wonder Hygiene</title>
 
+<!-- PREMIUM FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-body { margin:0; font-family:Arial; background:#f5f7fa; }
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#f5f7fa;
+}
 
 /* HEADER */
 header {
   background:#0f172a;
   color:white;
-  display:flex;
-  justify-content:space-between;
-  padding:15px 30px;
+  text-align:center;
+  padding:20px;
 }
 
 /* HERO */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-  url('https://images.unsplash.com/photo-1588776814546-ec7e7f9f8d5b?auto=format&fit=crop&w=1200&q=80') center/cover;
-  height:320px;
+  url('https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&w=1400&q=80') center/cover;
+  height:350px;
+
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  color:white;
+  align-items:center;
+
   text-align:center;
+  color:white;
+  padding:20px;
+}
+
+.hero h1 {
+  font-size:42px;
+  margin:0;
+  font-weight:700;
+}
+
+.hero p {
+  margin-top:10px;
+  font-size:18px;
+  color:#e2e8f0;
 }
 
 /* HERO IMAGES */
 .hero-images {
   display:flex;
   gap:15px;
-  margin-top:15px;
+  margin-top:20px;
 }
 
 .hero-images img {
@@ -43,22 +64,29 @@ header {
 
 /* TABS */
 .tabs {
-  margin-top:20px;
+  margin-top:25px;
   display:flex;
-  gap:10px;
+  gap:12px;
 }
 
 .tabs button {
-  padding:10px 15px;
+  padding:10px 18px;
   border:none;
   border-radius:6px;
   background:#0f172a;
   color:white;
   cursor:pointer;
+  font-weight:500;
+}
+
+.tabs button:hover {
+  background:#1e293b;
 }
 
 /* PRODUCTS */
-.container { padding:30px; }
+.container {
+  padding:30px;
+}
 
 .products {
   display:grid;
@@ -81,12 +109,14 @@ header {
   border-radius:8px;
 }
 
-.price { color:green; font-weight:bold; }
+.price {
+  color:green;
+  font-weight:bold;
+}
 
-/* BUTTON */
-button.buy {
+.buy {
   width:100%;
-  margin-top:8px;
+  margin-top:10px;
   padding:10px;
   border:none;
   border-radius:6px;
@@ -108,10 +138,13 @@ button.buy {
   transition:0.3s;
 }
 
-.cart.active { right:0; }
+.cart.active {
+  right:0;
+}
 
+/* RESPONSIVE */
 @media(max-width:900px){
-.products{grid-template-columns:repeat(2,1fr);}
+  .products { grid-template-columns:repeat(2,1fr); }
 }
 </style>
 </head>
@@ -119,15 +152,18 @@ button.buy {
 <body>
 
 <header>
-<h2>Wonder Hygiene</h2>
-<button onclick="toggleCart()">🛒 (<span id="count">0</span>)</button>
+<h1>Wonder Hygiene</h1>
+<p>Premium Sanitizers & Handwash</p>
+<button onclick="toggleCart()">🛒 Cart (<span id="count">0</span>)</button>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<h2>Stay Clean. Stay Safe. Stay Wonder.</h2>
+<h1>Stay Clean. Stay Safe.</h1>
+<p>Advanced hygiene solutions for everyday protection</p>
 
 <div class="hero-images">
-<img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&w=200&q=80">
+<img src="https://images.unsplash.com/photo-1588776814546-ec7e7f9f8d5b?auto=format&fit=crop&w=200&q=80">
 <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=200&q=80">
 </div>
 
@@ -138,6 +174,7 @@ button.buy {
 </div>
 </section>
 
+<!-- PRODUCTS -->
 <div class="container">
 <div class="products">
 
@@ -182,7 +219,7 @@ button.buy {
 <input id="phone" placeholder="Phone">
 <input id="address" placeholder="Address">
 
-<button onclick="checkoutWhatsApp()">Order WhatsApp</button>
+<button onclick="checkoutWhatsApp()">WhatsApp Order</button>
 <button onclick="checkoutPay()">Pay Online</button>
 </div>
 
@@ -220,23 +257,16 @@ c.style.display=(cat==="all"||c.dataset.category===cat)?"block":"none";
 }
 
 function checkoutWhatsApp(){
-let msg="Order:\n";
-cart.forEach(i=>msg+=i.name+" x"+i.qty+"\n");
-window.open("https://wa.me/91XXXXXXXXXX?text="+encodeURIComponent(msg));
+window.open("https://wa.me/91XXXXXXXXXX");
 }
 
 function checkoutPay(){
-let total=0;
-cart.forEach(i=>total+=i.price*i.qty);
-
 var options={
 key:"YOUR_KEY_ID",
-amount:total*100,
+amount:100,
 currency:"INR",
-name:"Wonder Hygiene",
-handler:function(){alert("Payment Success")}
+name:"Wonder Hygiene"
 };
-
 new Razorpay(options).open();
 }
 </script>
