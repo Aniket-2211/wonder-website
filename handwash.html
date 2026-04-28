@@ -1,43 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Handwash</title>
+<meta charset="UTF-8">
+<title>Wonder Hygiene</title>
+
 <style>
-body{font-family:Arial;background:#f5f7fa;margin:0;}
-header{background:#0f172a;color:white;text-align:center;padding:20px;}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px;}
-.card{background:white;padding:15px;border-radius:10px;text-align:center;}
-button{width:100%;padding:10px;background:#0f172a;color:white;border:none;}
+body { margin:0; font-family:Arial; background:#f5f7fa; }
+
+/* HEADER */
+header {
+  background:#0f172a;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+}
+
+.cart-btn {
+  background:white;
+  color:#0f172a;
+  padding:8px 15px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+  url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2') center/cover;
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+}
+
+/* PRODUCTS */
+.container { padding:30px; }
+
+.products {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.card {
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.price { color:green; font-weight:bold; }
+
+button {
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  background:#0f172a;
+  color:white;
+  cursor:pointer;
+}
+
+/* CART PANEL */
+.cart {
+  position:fixed;
+  right:-350px;
+  top:0;
+  width:300px;
+  height:100%;
+  background:white;
+  box-shadow:-2px 0 10px rgba(0,0,0,0.2);
+  padding:20px;
+  transition:0.3s;
+}
+
+.cart.active { right:0; }
+
+.cart-item {
+  margin-bottom:10px;
+  border-bottom:1px solid #ddd;
+  padding-bottom:5px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Handwash</h1>
-<button onclick="goHome()">⬅ Back</button>
+  <h2>Wonder Hygiene</h2>
+  <div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
 </header>
 
+<section class="hero">
+  <h1>Stay Clean. Stay Safe.</h1>
+</section>
+
+<div class="container">
 <div class="products">
 
 <div class="card">
-<h3>Handwash 250ml</h3>
-<p>₹129</p>
-<button onclick="orderWhatsApp('250ml',129)">Buy</button>
+<h3>Sanitizer 50ml</h3>
+<p class="price">₹49</p>
+<button onclick="addToCart('Sanitizer 50ml',49)">Add to Cart</button>
 </div>
 
 <div class="card">
-<h3>Handwash 500ml</h3>
-<p>₹199</p>
-<button onclick="orderWhatsApp('500ml',199)">Buy</button>
+<h3>Sanitizer 100ml</h3>
+<p class="price">₹89</p>
+<button onclick="addToCart('Sanitizer 100ml',89)">Add to Cart</button>
 </div>
 
+<div class="card">
+<h3>Handwash 250ml</h3>
+<p class="price">₹129</p>
+<button onclick="addToCart('Handwash 250ml',129)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Combo Pack</h3>
+<p class="price">₹249</p>
+<button onclick="addToCart('Combo Pack',249)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+<!-- CART -->
+<div class="cart" id="cart">
+<h3>Your Cart</h3>
+<div id="cartItems"></div>
+<h4>Total: ₹<span id="total">0</span></h4>
+
+<button onclick="checkout()">Checkout (WhatsApp)</button>
 </div>
 
 <script>
-function goHome(){window.location.href="index.html";}
-function orderWhatsApp(p,price){
-window.open("https://wa.me/919876543210?text="+p+" ₹"+price);
+let cart = [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  updateCart();
+}
+
+function updateCart(){
+  let itemsHTML="";
+  let total=0;
+
+  cart.forEach(item=>{
+    itemsHTML += "<div class='cart-item'>" + item.name + " - ₹" + item.price + "</div>";
+    total += item.price;
+  });
+
+  document.getElementById("cartItems").innerHTML = itemsHTML;
+  document.getElementById("total").innerText = total;
+  document.getElementById("cartCount").innerText = cart.length;
+}
+
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("active");
+}
+
+function checkout(){
+  let phone="919876543210"; // replace
+
+  let message="Order:\n";
+  cart.forEach(item=>{
+    message += item.name + " - ₹" + item.price + "\n";
+  });
+
+  window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message));
 }
 </script>
 
