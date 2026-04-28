@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sanitizers - Wonder</title>
+<title>Sanitizers</title>
+<style>
+body{font-family:Arial;background:#f5f7fa;margin:0;}
+header{background:#0f172a;color:white;text-align:center;padding:20px;}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px;}
+.card{background:white;padding:15px;border-radius:10px;text-align:center;}
+button{width:100%;padding:10px;background:#0f172a;color:white;border:none;}
+</style>
 </head>
-<body style="font-family:Arial; padding:20px;">
 
+<body>
+
+<header>
 <h1>Sanitizers</h1>
+<button onclick="goHome()">⬅ Back</button>
+</header>
 
-<div>
-  <h3>WonderFoam 50ml</h3>
-  <p>₹49</p>
+<div class="products">
+
+<div class="card">
+<h3>WonderFoam 50ml</h3>
+<p>₹49</p>
+<button onclick="orderWhatsApp('50ml',49)">Buy</button>
 </div>
 
-<div>
-  <h3>WonderFoam 100ml</h3>
-  <p>₹89</p>
+<div class="card">
+<h3>WonderFoam 100ml</h3>
+<p>₹89</p>
+<button onclick="orderWhatsApp('100ml',89)">Buy</button>
 </div>
+
+</div>
+
+<script>
+function goHome(){window.location.href="index.html";}
+function orderWhatsApp(p,price){
+window.open("https://wa.me/919876543210?text="+p+" ₹"+price);
+}
+</script>
 
 </body>
 </html>
