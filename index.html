@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Wonder Hygiene</title>
+
   <style>
     body {
       margin: 0;
@@ -17,16 +18,6 @@
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 36px;
-    }
-
-    header p {
-      margin-top: 5px;
-      color: #cbd5e1;
-    }
-
     .hero {
       background: url('https://images.unsplash.com/photo-1588776814546-ec7e7f9f8d5b') center/cover no-repeat;
       height: 300px;
@@ -34,7 +25,6 @@
       align-items: center;
       justify-content: center;
       color: white;
-      text-align: center;
     }
 
     .hero h2 {
@@ -45,10 +35,6 @@
 
     .container {
       padding: 30px;
-    }
-
-    h2 {
-      margin-bottom: 20px;
     }
 
     .products {
@@ -69,11 +55,6 @@
       width: 100%;
       height: 150px;
       object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .card h3 {
-      margin: 10px 0 5px;
     }
 
     .price {
@@ -81,61 +62,37 @@
       font-weight: bold;
     }
 
-    .categories, .combos {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .category, .combo {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      flex: 1;
-      min-width: 200px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
       background: #0f172a;
       color: white;
-      margin-top: 30px;
+    }
+
+    button:hover {
+      background: #1e293b;
     }
 
     @media(max-width: 900px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .products { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media(max-width: 500px) {
-      .products {
-        grid-template-columns: 1fr;
-      }
+      .products { grid-template-columns: 1fr; }
     }
-
-    button {
-  background: #0f172a;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #1e293b;
-}
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Wonder</h1>
-  <p>Reinventing Hygiene – Premium Sanitizers & Handwash</p>
+  <h1>Wonder Hygiene</h1>
+  <p>Premium Sanitizers & Handwash</p>
 </header>
 
 <section class="hero">
@@ -144,112 +101,111 @@ button:hover {
 
 <div class="container">
 
-  <!-- PRODUCTS -->
-  <h2>Featured Products</h2>
-  <div class="products">
+<h2>Featured Products</h2>
 
-    <div class="card">
-  <img src="https://via.placeholder.com/200">
-  <h3>WonderFoam Sanitizer (50ml)</h3>
-  <p class="price">₹49</p>
-  <p>Moisturizing, non-drying formula</p>
+<div class="products">
 
-  <button onclick="buyNow('WonderFoam 50ml',49)">
-    Buy Now
-  </button>
-</div>
+  <!-- PRODUCT 1 -->
+  <div class="card">
+    <img src="https://via.placeholder.com/200">
+    <h3>WonderFoam Sanitizer (50ml)</h3>
+    <p class="price">₹49</p>
+    <p>Moisturizing, non-drying formula</p>
 
-    <div class="card">
-  <img src="https://via.placeholder.com/200">
-  <h3>WonderFoam Sanitizer (50ml)</h3>
-  <p class="price">₹49</p>
-  <p>Moisturizing, non-drying formula</p>
-
-  <button onclick="buyNow('WonderFoam 50ml',49)">
-    Buy Now
-  </button>
-</div>
-
-    <div class="card">
-  <img src="https://via.placeholder.com/200">
-  <h3>WonderFoam Sanitizer (50ml)</h3>
-  <p class="price">₹49</p>
-  <p>Moisturizing, non-drying formula</p>
-
-  <button onclick="buyNow('WonderFoam 50ml',49)">
-    Buy Now
-  </button>
-</div>
-
-    <div class="card">
-  <img src="https://via.placeholder.com/200">
-  <h3>WonderFoam Sanitizer (50ml)</h3>
-  <p class="price">₹49</p>
-  <p>Moisturizing, non-drying formula</p>
-
-  <button onclick="buyNow('WonderFoam 50ml',49)">
-    Buy Now
-  </button>
-</div>
-
-  <!-- CATEGORIES -->
-  <h2>Categories</h2>
-  <div class="categories">
-
-    <div class="category">
-      <h3>Hand Sanitizers</h3>
-      <p>Alcohol-based, moisturizing sanitizers</p>
-    </div>
-
-    <div class="category">
-      <h3>Handwash</h3>
-      <p>Gentle & skin-friendly handwash</p>
-    </div>
-
-    <div class="category">
-      <h3>Premium Hygiene</h3>
-      <p>Luxury hygiene solutions</p>
-    </div>
-
+    <button onclick="orderWhatsApp('WonderFoam 50ml',49)">Order on WhatsApp</button>
+    <button onclick="payNow('WonderFoam 50ml',49)">Pay Online</button>
+    <button onclick="payUPI('WonderFoam 50ml',49)">Pay via UPI</button>
   </div>
 
-  <!-- COMBOS -->
-  <h2>Combos</h2>
-  <div class="combos">
+  <!-- PRODUCT 2 -->
+  <div class="card">
+    <img src="https://via.placeholder.com/200">
+    <h3>WonderFoam Sanitizer (100ml)</h3>
+    <p class="price">₹89</p>
+    <p>Extra hydration with Aloe</p>
 
-    <div class="combo">
-      <h3>Travel Combo</h3>
-      <p>Mini sanitizer + pocket handwash</p>
-      <p class="price">₹ Combo Price</p>
-    </div>
+    <button onclick="orderWhatsApp('WonderFoam 100ml',89)">Order on WhatsApp</button>
+    <button onclick="payNow('WonderFoam 100ml',89)">Pay Online</button>
+    <button onclick="payUPI('WonderFoam 100ml',89)">Pay via UPI</button>
+  </div>
 
-    <div class="combo">
-      <h3>Family Pack</h3>
-      <p>3 Sanitizers + 2 Handwash</p>
-      <p class="price">₹ Combo Price</p>
-    </div>
+  <!-- PRODUCT 3 -->
+  <div class="card">
+    <img src="https://via.placeholder.com/200">
+    <h3>WonderWash Handwash (250ml)</h3>
+    <p class="price">₹129</p>
+    <p>Gentle & antibacterial</p>
 
-    <div class="combo">
-      <h3>Office Kit</h3>
-      <p>Desk sanitizer + refill pack</p>
-      <p class="price">₹ Combo Price</p>
-    </div>
+    <button onclick="orderWhatsApp('Handwash 250ml',129)">Order on WhatsApp</button>
+    <button onclick="payNow('Handwash 250ml',129)">Pay Online</button>
+    <button onclick="payUPI('Handwash 250ml',129)">Pay via UPI</button>
+  </div>
 
+  <!-- PRODUCT 4 -->
+  <div class="card">
+    <img src="https://via.placeholder.com/200">
+    <h3>Family Pack Combo</h3>
+    <p class="price">₹249</p>
+    <p>2 Sanitizers + 1 Handwash</p>
+
+    <button onclick="orderWhatsApp('Family Combo',249)">Order on WhatsApp</button>
+    <button onclick="payNow('Family Combo',249)">Pay Online</button>
+    <button onclick="payUPI('Family Combo',249)">Pay via UPI</button>
   </div>
 
 </div>
 
-<footer>
-  <p>© 2026 Wonder Hygiene. All rights reserved.</p>
+</div>
+
+<footer style="text-align:center;padding:20px;background:#0f172a;color:white;">
+  © 2026 Wonder Hygiene
 </footer>
-<script>
-function buyNow(product, price) {
-  alert("Order placed for " + product + " worth ₹" + price);
 
-  // Later we connect payment gateway here
+<!-- WHATSAPP -->
+<script>
+function orderWhatsApp(product, price) {
+  var phone = "919876543210"; // 🔥 replace with your number
+
+  var msg = "Hello, I want to order:\nProduct: " + product + "\nPrice: ₹" + price;
+
+  window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg));
 }
 </script>
-  
-  
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+function payNow(product, price) {
+  var options = {
+    "key": "YOUR_KEY_ID", // 🔥 replace this
+    "amount": price * 100,
+    "currency": "INR",
+    "name": "Wonder Hygiene",
+    "description": product,
+    "handler": function () {
+      alert("Payment successful for " + product);
+    }
+  };
+
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
+
+<!-- UPI -->
+<script>
+function payUPI(product, price) {
+  var upi = "yourupi@upi"; // 🔥 replace this
+
+  var url = "upi://pay?pa=" + upi +
+            "&pn=Wonder Hygiene" +
+            "&am=" + price +
+            "&cu=INR";
+
+  window.location.href = url;
+}
+</script>
+
 </body>
 </html>
