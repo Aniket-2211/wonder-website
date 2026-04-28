@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wonder Hygiene</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      margin-top: 5px;
+      color: #cbd5e1;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1588776814546-ec7e7f9f8d5b') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h2 {
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .price {
+      color: green;
+      font-weight: bold;
+    }
+
+    .categories, .combos {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .category, .combo {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0f172a;
+      color: white;
+      margin-top: 30px;
+    }
+
+    @media(max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 500px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    button {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e293b;
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Wonder</h1>
+  <p>Reinventing Hygiene – Premium Sanitizers & Handwash</p>
+</header>
+
+<section class="hero">
+  <h2>Stay Clean. Stay Safe. Stay Wonder.</h2>
+</section>
+
+<div class="container">
+
+  <!-- PRODUCTS -->
+  <h2>Featured Products</h2>
+  <div class="products">
+
+    <div class="card">
+  <img src="https://via.placeholder.com/200">
+  <h3>WonderFoam Sanitizer (50ml)</h3>
+  <p class="price">₹49</p>
+  <p>Moisturizing, non-drying formula</p>
+
+  <button onclick="buyNow('WonderFoam 50ml',49)">
+    Buy Now
+  </button>
+</div>
+
+    <div class="card">
+  <img src="https://via.placeholder.com/200">
+  <h3>WonderFoam Sanitizer (50ml)</h3>
+  <p class="price">₹49</p>
+  <p>Moisturizing, non-drying formula</p>
+
+  <button onclick="buyNow('WonderFoam 50ml',49)">
+    Buy Now
+  </button>
+</div>
+
+    <div class="card">
+  <img src="https://via.placeholder.com/200">
+  <h3>WonderFoam Sanitizer (50ml)</h3>
+  <p class="price">₹49</p>
+  <p>Moisturizing, non-drying formula</p>
+
+  <button onclick="buyNow('WonderFoam 50ml',49)">
+    Buy Now
+  </button>
+</div>
+
+    <div class="card">
+  <img src="https://via.placeholder.com/200">
+  <h3>WonderFoam Sanitizer (50ml)</h3>
+  <p class="price">₹49</p>
+  <p>Moisturizing, non-drying formula</p>
+
+  <button onclick="buyNow('WonderFoam 50ml',49)">
+    Buy Now
+  </button>
+</div>
+
+  <!-- CATEGORIES -->
+  <h2>Categories</h2>
+  <div class="categories">
+
+    <div class="category">
+      <h3>Hand Sanitizers</h3>
+      <p>Alcohol-based, moisturizing sanitizers</p>
+    </div>
+
+    <div class="category">
+      <h3>Handwash</h3>
+      <p>Gentle & skin-friendly handwash</p>
+    </div>
+
+    <div class="category">
+      <h3>Premium Hygiene</h3>
+      <p>Luxury hygiene solutions</p>
+    </div>
+
+  </div>
+
+  <!-- COMBOS -->
+  <h2>Combos</h2>
+  <div class="combos">
+
+    <div class="combo">
+      <h3>Travel Combo</h3>
+      <p>Mini sanitizer + pocket handwash</p>
+      <p class="price">₹ Combo Price</p>
+    </div>
+
+    <div class="combo">
+      <h3>Family Pack</h3>
+      <p>3 Sanitizers + 2 Handwash</p>
+      <p class="price">₹ Combo Price</p>
+    </div>
+
+    <div class="combo">
+      <h3>Office Kit</h3>
+      <p>Desk sanitizer + refill pack</p>
+      <p class="price">₹ Combo Price</p>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Wonder Hygiene. All rights reserved.</p>
+</footer>
+<script>
+function buyNow(product, price) {
+  alert("Order placed for " + product + " worth ₹" + price);
+
+  // Later we connect payment gateway here
+}
+</script>
+  
+  
+</body>
+</html>
