@@ -11,9 +11,39 @@ body {
   margin:0;
   font-family:'Poppins', sans-serif;
   background:#f5f7fa;
+  overflow-x:hidden;
 }
 
-/* 🔥 STICKY HEADER */
+/* 🔥 LOADER */
+.loader {
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.loader.hidden {
+  display:none;
+}
+
+.loader div {
+  width:40px;
+  height:40px;
+  border:5px solid #ddd;
+  border-top:5px solid #0f172a;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform:rotate(360deg); }
+}
+
+/* HEADER */
 header {
   position:sticky;
   top:0;
@@ -21,20 +51,19 @@ header {
   background:#0f172a;
   color:white;
   padding:15px 20px;
-
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
 }
 
-/* LEFT LOGO */
+/* LOGO */
 .logo {
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.logo img {
+.logo svg {
   width:40px;
 }
 
@@ -61,7 +90,7 @@ header {
   color:#cbd5e1;
 }
 
-/* RIGHT CART */
+/* CART */
 .cart-btn {
   background:white;
   color:#0f172a;
@@ -72,7 +101,6 @@ header {
 }
 
 .cart-btn:hover {
-  background:#e2e8f0;
   transform:scale(1.05);
 }
 
@@ -81,7 +109,6 @@ header {
   background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
   url('https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&w=1400&q=80') center/cover;
   height:350px;
-
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -90,19 +117,15 @@ header {
   color:white;
 }
 
-/* ANIMATION */
-.hero h1 {
-  font-size:42px;
-  animation:fadeIn 1s ease-in-out;
+.fade {
+  opacity:0;
+  transform:translateY(20px);
+  transition:1s;
 }
 
-.hero p {
-  animation:fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
+.fade.show {
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* HERO IMAGES */
@@ -140,7 +163,6 @@ header {
 }
 
 .tabs button:hover {
-  background:#1e293b;
   transform:translateY(-2px);
 }
 
@@ -184,11 +206,6 @@ header {
   background:#0f172a;
   color:white;
   cursor:pointer;
-  transition:0.3s;
-}
-
-.buy:hover {
-  background:#1e293b;
 }
 
 /* CART */
@@ -204,11 +221,8 @@ header {
   transition:0.3s;
 }
 
-.cart.active {
-  right:0;
-}
+.cart.active { right:0; }
 
-/* RESPONSIVE */
 @media(max-width:900px){
 .products{grid-template-columns:repeat(2,1fr);}
 }
@@ -217,11 +231,19 @@ header {
 
 <body>
 
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div></div>
+</div>
+
 <header>
 
-  <!-- LEFT LOGO -->
+  <!-- LOGO -->
   <div class="logo">
-    <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png">
+    <svg viewBox="0 0 100 100" fill="#4ade80">
+      <circle cx="50" cy="50" r="45" />
+      <text x="50%" y="55%" text-anchor="middle" fill="white" font-size="40">W</text>
+    </svg>
     <span>Wonder</span>
   </div>
 
@@ -231,7 +253,7 @@ header {
     <p>Premium Sanitizers & Handwash</p>
   </div>
 
-  <!-- RIGHT CART -->
+  <!-- CART -->
   <div class="cart-btn" onclick="toggleCart()">
     🛒 (<span id="count">0</span>)
   </div>
@@ -239,15 +261,15 @@ header {
 </header>
 
 <section class="hero">
-<h1>Stay Clean. Stay Safe.</h1>
-<p>Advanced hygiene solutions for everyday protection</p>
+<h1 class="fade">Stay Clean. Stay Safe.</h1>
+<p class="fade">Advanced hygiene solutions</p>
 
-<div class="hero-images">
+<div class="hero-images fade">
 <img src="https://images.unsplash.com/photo-1588776814546-ec7e7f9f8d5b?auto=format&fit=crop&w=200&q=80">
 <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=200&q=80">
 </div>
 
-<div class="tabs">
+<div class="tabs fade">
 <button onclick="filterProducts('all')">All</button>
 <button onclick="filterProducts('sanitizer')">Sanitizers</button>
 <button onclick="filterProducts('handwash')">Handwash</button>
@@ -257,14 +279,14 @@ header {
 <div class="container">
 <div class="products">
 
-<div class="card" data-category="sanitizer">
+<div class="card fade" data-category="sanitizer">
 <img src="https://images.unsplash.com/photo-1588776814546-ec7e7f9f8d5b?auto=format&fit=crop&w=300&q=80">
 <h3>Sanitizer 50ml</h3>
 <p class="price">₹49</p>
 <button class="buy" onclick="addToCart('Sanitizer 50ml',49)">Add to Cart</button>
 </div>
 
-<div class="card" data-category="handwash">
+<div class="card fade" data-category="handwash">
 <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&w=300&q=80">
 <h3>Handwash 250ml</h3>
 <p class="price">₹129</p>
@@ -282,6 +304,19 @@ header {
 </div>
 
 <script>
+/* LOADER */
+window.onload = () => {
+  document.getElementById("loader").classList.add("hidden");
+}
+
+/* FADE ANIMATION */
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){ e.target.classList.add("show"); }
+});
+});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
 let cart=[];
 
 function addToCart(name,price){
